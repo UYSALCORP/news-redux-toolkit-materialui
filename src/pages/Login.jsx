@@ -1,12 +1,21 @@
 import React from 'react'
 import {Avatar, Box, Button, Container, Link, TextField, Typography} from "@mui/material";
+import { useDispatch, useSelector } from 'react-redux';
+import { kullaniciOlustur } from '../features/yetkiSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-
-
+  let {email, password} = useSelector((state)=>state.yetkiSlice)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    dispatch(kullaniciOlustur({email, password}))
+    navigate("/")
+  }
   return (
     <Container component="main" maxWidth="xs">
-      <Box
+      <Box onSubmit={handleSubmit}
         sx={{
           marginTop: 8,
           display: "flex",
@@ -35,7 +44,7 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
-          
+            onChange={(e)=>(email=e.target.value)}          
           />
           <TextField
             margin="normal"
@@ -45,7 +54,7 @@ const Login = () => {
             label="Password"
             type="password"
             id="password"
-         
+            onChange={(e)=>(password=e.target.value)} 
           />
 
           <Button
@@ -62,8 +71,8 @@ const Login = () => {
 
       <Typography variant="body2" color="text.secondary" align="center">
         {"Copyright © "}
-        <Link color="inherit" href="https://www.clarusway.com/">
-          Clarusway
+        <Link color="inherit" href="https://www.github.com/UYSALCORP">
+          UYSALCORP
         </Link>{" "}
         {new Date().getFullYear()}
         {"."}

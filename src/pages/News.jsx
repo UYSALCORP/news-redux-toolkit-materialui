@@ -28,7 +28,7 @@ const News = () => {
         >
        
         </Box>
-    
+    News
     </>
   );
 };
