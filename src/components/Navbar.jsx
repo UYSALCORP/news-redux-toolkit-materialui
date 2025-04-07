@@ -25,7 +25,7 @@ const Navbar = () => {
             UYSALCORP | News
           </Typography>
           {
-            email? (<Button onClick={handleLogout} color="inherit">Logout</Button>) : (<Button color="inherit">Sign In</Button>)
+            email? (<Button onClick={handleLogout} color="inherit">Logout</Button>) : (<Button color="inherit">Sign Up</Button>)
           }
           
           
